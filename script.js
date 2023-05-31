@@ -1,31 +1,25 @@
-// let button = document.getElementById("enter");
-// let newItem = document.getElementById("userinput");
-// let li = document.querySelector("ul");
-
-// button.addEventListener("click", function () 
-//     {
-//     let newLi = document.createElement("li");
-//     newLi.appendChild(document.createTextNode(newItem.value));
-//     li.appendChild(newLi);
-//     newItem.value = "";
-//     }
-//     )
-
-let button = document.getElementById("enter");
 let input = document.getElementById("userinput");
+let button = document.getElementById("enter");
 let list = document.querySelector("ul");
+let items = document.querySelectorAll("li");
+
+
+function createNewItem () {
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode(input.value));
+    list.appendChild(li);
+    input.value = "";
+}
 
 button.addEventListener("click", function () {
     if (input.value.length > 0) {
-        let newList = document.createElement("li");
-        newList.appendChild(document.createTextNode(input.value));
-        list.appendChild(newList);
-        input.value = "";
-        
+        createNewItem ()
 }
-    else {
-        input.value = "";
-    }
-}
-)
+})
+
+items.forEach(element => {
+    element.addEventListener("click", function () {
+        element.classList.toggle("done");
+    })
+});
 
